@@ -10,7 +10,7 @@
          
          // >>>>>>> I need to declare Yi first!
          // Maybe take it as an input dictionary and declare in createFields?
-         //or maybe define it as a class inside the phaseModels. This might need substantial change (phase.Y) 
+         //or maybe define it as a class inside the phaseModels. This might need substantial change (phase.Y). 
          fvScalarMatrix YiEqn
         (
             fvm::ddt(porosity * S * rho, Yi)
