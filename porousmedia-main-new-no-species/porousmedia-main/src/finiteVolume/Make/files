@@ -1,3 +1,0 @@
-fluxPressure/fluxPressureFvPatchScalarField.C
-
-LIB = $(FOAM_USER_LIBBIN)/libfiniteVolumeAddon

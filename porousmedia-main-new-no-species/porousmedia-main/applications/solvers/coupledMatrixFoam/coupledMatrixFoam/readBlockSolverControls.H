@@ -1,9 +1,0 @@
-{
-    setRefCell
-    (
-        p,
-        blockSolverDict,
-        pRefCell,
-        pRefValue
-    );
-}
