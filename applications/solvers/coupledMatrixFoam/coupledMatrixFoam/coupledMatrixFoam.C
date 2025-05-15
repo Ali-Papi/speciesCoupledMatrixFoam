@@ -75,6 +75,7 @@ int main(int argc, char *argv[])
 
             // Retrieve solution and post-solve
             #include "postSolve.H"
+            #include "YiEqn.H"
         }
 
         runTime.write();
