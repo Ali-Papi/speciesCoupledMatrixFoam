@@ -1,0 +1,71 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | foam-extend: Open Source CFD
+   \\    /   O peration     | Version:     5.0
+    \\  /    A nd           | Coupled-fe: Porous media simulator
+     \\/     M anipulation  | Version:  alpha
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+blockSolver
+{
+    pAs
+    {
+        solver           BiCGStab;   
+        preconditioner   ILUC0;
+        // preconditioner
+        // {
+        //     preconditioner          BlockAMG;
+        //     smoother                ILUC0;
+        //     cycle                   V-cycle;
+        //     nPreSweeps              1;             
+        //     nPostSweeps             2;
+        //     nMaxLevels              1;
+        //     scale                   false;  
+        //     coarseningType          SAMG;
+        //     groupSize               10;
+        //     minCoarseEqns           20;
+        //     minGroupSize            5;
+        //     maxGroupSize            50;
+        //     norm                    maxNorm;      
+        // }
+        tolerance        1e-07;
+        relTol           0.01;
+
+        minIter          1;
+        maxIter          1000;
+    }
+}
+
+COUPLED
+{
+    nOuterCorrectors            20;
+
+    residualControl
+    {
+        pAs
+        {
+            tolerance   1e-3;
+            relTol      0;
+        }
+    }
+}
+
+relaxationFactors
+{
+    fields
+    {}
+    equations 
+    {}
+}
+
+
+// ************************************************************************* //

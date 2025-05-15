@@ -1,0 +1,38 @@
+#!/bin/sh
+
+# Ensure the script runs from its own directory
+cd "${0%/*}" || exit
+
+# Source OpenFOAM's run functions (e.g. runApplication, getApplication)
+. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions
+
+#------------------------------------------------------------------------------
+# Restore initial conditions from backup
+cp 0.orig 0 -R
+
+# Extract the mesh from a compressed archive
+tar -xvzf polyMesh.tar.xz
+
+#------------------------------------------------------------------------------
+# Temporary fix: change field type from diagTensor to vector
+# Because decomposePar doesn't handle diagTensor well
+sed -i 's/diagTensor/vector/g' 0/invK.*
+sed -i 's/DiagTensor/Vector/g' 0/invK.*
+
+# Decompose the case for parallel execution
+runApplication decomposePar
+
+# Revert field types back to diagTensor after decomposition
+sed -i 's/vector/diagTensor/g' 0/invK.*
+sed -i 's/Vector/DiagTensor/g' 0/invK.*
+
+# Apply the same reversion in all processor directories
+find processor*/0 -type f -name "invK.*" -exec sed -i 's/vector/diagTensor/g' {} +
+find processor*/0 -type f -name "invK.*" -exec sed -i 's/Vector/DiagTensor/g' {} +
+
+# Run the application in parallel using 6 processors
+runParallel $(getApplication) 6
+
+# Reconstruct the decomposed results into a single case
+runApplication reconstructPar
+#------------------------------------------------------------------------------

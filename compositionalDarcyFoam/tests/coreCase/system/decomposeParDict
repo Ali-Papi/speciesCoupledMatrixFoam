@@ -1,0 +1,26 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \    /   O peration     | Version:  OpenFoam-9 (commit f8d11b031)
+    \  /    A nd           | Upstream: A Wikki Brasil project
+     \/     M anipulation  | Version:  v21.12
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      decomposeParDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+numberOfSubdomains            6;
+method                        simple;
+
+simpleCoeffs
+{
+    n               (1 2 3);
+    delta           0.001;
+}
+//************************************************************************** //

@@ -1,0 +1,41 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | foam-extend: Open Source CFD
+   \\    /   O peration     | Version:     5.0
+    \\  /    A nd           | Coupled-fe: Porous media simulator
+     \\/     M anipulation  | Version:  alpha
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       volScalarField;
+    location    "0";
+    object      p;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+dimensions          [1 -1 -2 0 0 0 0];
+
+internalField       uniform 1.01352972;
+
+boundaryField
+{
+	outlet
+	{
+		type                          fixedValue;
+		value                         uniform  1.01352972;
+	}
+	inlet
+	{
+		type                          fluxPressure;
+		value                         uniform  1.01352972;
+	}
+	wall
+	{
+		type                          fluxPressure;
+		value                         uniform  1.01352972;
+	}
+}
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

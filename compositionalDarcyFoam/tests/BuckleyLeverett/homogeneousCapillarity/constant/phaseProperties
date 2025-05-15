@@ -1,0 +1,80 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Version:  foam-extend 5.0
+    \\  /    A nd           | PorousMedia: A Wikki Brasil project
+     \\/     M anipulation  | Solver: coupledMatrixFoam
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "constant";
+    object      phaseProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+type basicMultiphaseSystem;
+
+phases (water oil rock);
+
+referencePhase water;
+
+oil
+{
+    type            pureIsothermalPhaseModel;
+    rho0            800;
+    psi             0;
+    mu              0.002;
+    residualAlpha   1e-10;
+}
+
+water
+{
+    type            pureIsothermalPhaseModel;
+    rho0            1000;
+    psi             0;
+    mu              0.001;
+    residualAlpha   1e-10;
+}
+
+rock
+{
+    type            purePorousIsothermalPhaseModel;
+    rho0            2713;
+    psi             0;
+    residualAlpha   1e-10;
+}
+
+momentum
+{
+    oil_relativeWith_rock
+    {
+        type        Darcy;
+
+        KrModel     BrooksAndCorey;
+        eta         2;
+    }
+
+    water_relativeWith_rock
+    {
+        type        Darcy;
+
+        KrModel     BrooksAndCorey;
+        eta         2;
+    }
+}
+
+massTransfer{}
+capillarity
+{
+    water_relativeWith_oil
+    {
+        type        BrooksAndCorey;
+        pc0         10e-4;
+        zeta        0.5;
+        eta         2;
+    }
+}
+// ************************************************************************* //

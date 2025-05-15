@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+  <title>$title$</title>
+
+  <!-- Doxygen Awesome CSS -->
+  <link rel="stylesheet" href="doxygen-awesome.css"/>
+  <link rel="stylesheet" href="custom-alternative.css"/>
+
+  <!-- Optional: add custom layout for markdown if needed -->
+  <!-- <link rel="stylesheet" href="custom-pandoc-style.css"/> -->
+
+  <!-- MathJax for LaTeX rendering -->
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <!-- Doxygen Awesome JS plugins -->
+  <script src="doxygen-awesome-darkmode-toggle.js"></script>
+  <script src="doxygen-awesome-fragment-copy-button.js"></script>
+  <script src="doxygen-awesome-paragraph-link.js"></script>
+  <script src="doxygen-awesome-interactive-toc.js"></script>
+  <script src="doxygen-awesome-tabs.js"></script>
+  <script src="toggle-alternative-theme.js"></script>
+
+  <!-- Inicialização dos componentes JS -->
+  <script>
+    window.addEventListener("DOMContentLoaded", () => {
+      DoxygenAwesomeDarkModeToggle?.init?.();
+      DoxygenAwesomeFragmentCopyButton?.init?.();
+      DoxygenAwesomeParagraphLink?.init?.();
+      DoxygenAwesomeInteractiveToc?.init?.();
+      DoxygenAwesomeTabs?.init?.();
+    });
+  </script>
+</head>
+
+<body>
+  <main class="markdown-body">
+    $body$
+  </main>
+</body>
+</html>

@@ -1,0 +1,45 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Version:  foam-extend 5.0
+    \\  /    A nd           | PorousMedia: A Wikki Brasil project
+     \\/     M anipulation  | Solver: coupledMatrixFoam
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      sampleDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+interpolationScheme cellPoint;
+
+setFormat     raw;
+
+sets
+(
+
+// x axes N1 upstream profile
+    fig7_x_037
+    {
+        type            uniform;
+        axis            distance;
+        start           (.5 .5 .5);
+        end             (.5 9.5 .5);
+        nPoints         10;
+    }
+);
+
+surfaces
+();
+
+surfaceFormat null;
+
+fields
+(
+    alpha.gas alpha.oil alpha.rock
+);
+
+// ************************************************************************* //

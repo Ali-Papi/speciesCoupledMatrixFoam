@@ -1,0 +1,62 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     5.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       regIOobject;
+    location    "8000/uniform";
+    object      profilingInfo;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+profilingInfo
+(
+
+    {
+        id              4;
+        parentId        3;
+        description     "Foam::Time::writeObject - outputTime";
+        calls           4;
+        totalTime       0.248998;
+        childTime       0;
+        onStack         1;
+    }
+
+    {
+        id              3;
+        parentId        1;
+        description     "Foam::Time::writeObject";
+        calls           222;
+        totalTime       0.250312;
+        childTime       0.248998;
+        onStack         1;
+    }
+
+    {
+        id              1;
+        description     "application::main";
+        calls           1;
+        totalTime       7.51208;
+        childTime       0.250554;
+        onStack         1;
+    }
+
+    {
+        id              2;
+        parentId        1;
+        description     "functionObjectList::read";
+        calls           1;
+        totalTime       0.000242;
+        childTime       0;
+        onStack         0;
+    }
+);
+
+
+// ************************************************************************* //
