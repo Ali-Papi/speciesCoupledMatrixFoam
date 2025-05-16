@@ -10,16 +10,36 @@
          
          // >>>>>>> I need to declare Yi first!
          // Maybe take it as an input dictionary and declare in createFields?
-         //or maybe define it as a class inside the phaseModels (phase.Y). This might need substantial change. 
-         fvScalarMatrix YiEqn
-        (
-            fvm::ddt(porosity * S * rho, Yi)
-          + fvm::div(rho * phi, Yi)
-            //==
-            // event source terms
-            //- sourceTerm
-        );
-        YiEqn.solve(); // or YiEqn.solve("Yi")?
+         //or maybe define it as a class inside the phaseModels (phase.Y). This might need substantial change.
+         // below, we use the first method (take as inout).
+
+         if (phase.name() == 'CO2')
+            {
+                fvScalarMatrix YCO2Eqn
+                (
+                    fvm::ddt(porosity * S * rho, YCO2)
+                    + fvm::div(rho * phi, YCO2)
+                    //==
+                    // event source terms
+                    //- sourceTerm
+                    );
+                    YCO2Eqn.solve(); // or YiEqn.solve("Yi")?
+                    YH2O = 1 - YCO2;
+            }
+            else if (phase.name() == 'H2O')
+            {
+                fvScalarMatrix XCO2Eqn
+                (
+                    fvm::ddt(porosity * S * rho, XCO2)
+                    + fvm::div(rho * phi, XCO2)
+                    //==
+                    // event source terms
+                    //- sourceTerm
+                    );
+                    XCO2Eqn.solve(); // or YiEqn.solve("Yi")?
+                    XH2O = 1 - XCO2;
+            }
+         
     }
    
 }
