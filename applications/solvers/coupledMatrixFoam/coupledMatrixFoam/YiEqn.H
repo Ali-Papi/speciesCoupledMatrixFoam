@@ -13,7 +13,7 @@
          //or maybe define it as a class inside the phaseModels (phase.Y). This might need substantial change.
          // Below, we use the first method (take as an input).
 
-         if (phase.name() == "CO2")
+         if (phase.name() == "gas")
             {
                 fvScalarMatrix YCO2Eqn
                 (
@@ -26,7 +26,7 @@
                     YCO2Eqn.solve();
                     YH2O = 1 - YCO2;
             }
-            else if (phase.name() == "H2O")
+            else if (phase.name() == "water")
             {
                 fvScalarMatrix XCO2Eqn
                 (
@@ -39,7 +39,22 @@
                     XCO2Eqn.solve();
                     XH2O = 1 - XCO2;
             }
-         
+
+/* forAll(species, i)
+{
+    volScalarField& Yi = species[i];
+
+    Info << "Solving for species " << Yi.name() << endl;
+
+    fvScalarMatrix YiEqn
+    (
+        fvm::ddt(porosity * S * rho, Yi)
+      + fvm::div(fvc::interpolate(rho) * phi, Yi)
+    );
+
+    YiEqn.solve();
+}
+*/
     }
    
 }

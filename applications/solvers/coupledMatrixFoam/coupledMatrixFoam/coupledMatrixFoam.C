@@ -40,7 +40,7 @@ Authors
 #include "multivariateSurfaceInterpolationScheme.H"
 
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
-
+ //   PtrList<volScalarField> species;
 int main(int argc, char *argv[])
 {
     #include "setRootCase.H"

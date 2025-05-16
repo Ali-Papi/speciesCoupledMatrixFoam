@@ -60,7 +60,6 @@ volScalarField YH2O
     //dimensionedScalar("",dimless,1)
 );
 //YH2O=1-YCO2;
-
     /// >>>> New changes ended <<<
     
     uniformDimensionedVectorField g
