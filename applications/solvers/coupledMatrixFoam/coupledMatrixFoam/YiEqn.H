@@ -13,12 +13,12 @@
          //or maybe define it as a class inside the phaseModels (phase.Y). This might need substantial change.
          // Below, we use the first method (take as an input).
 
-         if (phase.name() == 'CO2')
+         if (phase.name() == "CO2")
             {
                 fvScalarMatrix YCO2Eqn
                 (
                     fvm::ddt(porosity * S * rho, YCO2)
-                    + fvm::div(rho * phi, YCO2)
+                    + fvm::div(fvc::interpolate(rho) * phi, YCO2)
                     //==
                     // event source terms
                     //- sourceTerm
@@ -26,12 +26,12 @@
                     YCO2Eqn.solve();
                     YH2O = 1 - YCO2;
             }
-            else if (phase.name() == 'H2O')
+            else if (phase.name() == "H2O")
             {
                 fvScalarMatrix XCO2Eqn
                 (
                     fvm::ddt(porosity * S * rho, XCO2)
-                    + fvm::div(rho * phi, XCO2)
+                    + fvm::div(fvc::interpolate(rho) * phi, XCO2)
                     //==
                     // event source terms
                     //- sourceTerm
