@@ -1,17 +1,1 @@
-#!/bin/sh
-cd "${0%/*}" || exit                                # Run from this directory
-. ${WM_PROJECT_DIR:?}/bin/tools/RunFunctions        # Tutorial run functions
-#------------------------------------------------------------------------------
-
-cp 0.orig 0 -R
-
-runApplication blockMesh
-
-runApplication setFields
-
-runApplication $(getApplication)
-
-runApplication sample -latestTime
-
-python3 postProc.py
-
+# just run coupledMatrixFoam, the blockMesh is already created
