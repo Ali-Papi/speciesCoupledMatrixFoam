@@ -1,66 +1,58 @@
-    /// >>>> New changes <<<
     Info << nl << "Reading CO2 field XCO2" << endl;
-volScalarField XCO2
-(
-    IOobject
+    volScalarField XCO2
     (
-        "XCO2",
-        runTime.timeName(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
-);
+        IOobject
+        (
+            "XCO2",
+            runTime.timeName(),
+            mesh,
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh
+    );
 
-Info << nl << "Reading CO2 field YCO2" << endl;
-volScalarField YCO2
-(
-    IOobject
+    Info << nl << "Reading CO2 field YCO2" << endl;
+    volScalarField YCO2
     (
-        "YCO2",
-        runTime.timeName(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
-);
+        IOobject
+        (
+            "YCO2",
+            runTime.timeName(),
+            mesh,
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
+        ),
+        mesh
+    );
 
+    Info << nl << "Creating H2O fields from CO2 fields" << endl;
 
-Info << nl << "Reading H2O field XH2O" << endl;
-volScalarField XH2O
-(
-    IOobject
+    volScalarField XH2O
     (
-        "XH2O",
-        runTime.timeName(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
-   //dimensionedScalar("",dimless,1)
-);
-//XH2O=1-XCO2;
+        IOobject
+        (
+            "XH2O",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        1-XCO2
+    );
 
-Info << nl << "Reading H2O field YH2O" << endl;
-
-volScalarField YH2O
-(
-    IOobject
+    volScalarField YH2O
     (
-        "YH2O",
-        runTime.timeName(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::AUTO_WRITE
-    ),
-    mesh
-    //dimensionedScalar("",dimless,1)
-);
-//YH2O=1-YCO2;
-    /// >>>> New changes ended <<<
+        IOobject
+        (
+            "YH2O",
+            runTime.timeName(),
+            mesh,
+            IOobject::NO_READ,
+            IOobject::AUTO_WRITE
+        ),
+        1-YCO2
+    );
     
     uniformDimensionedVectorField g
     (
