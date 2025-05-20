@@ -5,8 +5,10 @@
         
         const volScalarField& S = phase.S();              // Saturation
         const volScalarField& rho = phase.rho();          // Density
-        const surfaceScalarField& phi = fluid.phi();      // Total flux
+        const surfaceScalarField& phi = phase.phi();      // Phase flux
+        const surfaceScalarField& alphaf = phase.alphaf();      // Alpha at face
         const volScalarField& porosity = fluid.porosity();// Porosity
+        Info << "phi " << phase.phi() << endl;
          
         // >>>>>>> I need to declare Yi first!
         // Maybe take it as an input dictionary and declare in createFields?
@@ -17,7 +19,7 @@
             fvScalarMatrix YCO2Eqn
             (
                 fvm::ddt(porosity * S * rho, YCO2)
-                + fvm::div(fvc::interpolate(rho) * phi, YCO2)
+                + fvm::div(fvc::interpolate(rho) * alphaf * phi, YCO2)
                 //==
                 // event source terms
                 //- sourceTerm
@@ -30,7 +32,7 @@
             fvScalarMatrix XCO2Eqn
             (
                 fvm::ddt(porosity * S * rho, XCO2)
-                + fvm::div(fvc::interpolate(rho) * phi, XCO2)
+                + fvm::div(fvc::interpolate(rho) * alphaf * phi, XCO2)
                 //==
                 // event source terms
                 //- sourceTerm
