@@ -21,7 +21,9 @@ boundaryField
 {
     inlet
     {
-        type                          zeroGradient;
+        type                          fixedValue ;
+       	value                         uniform (1e4 1e4 1e4);
+	//type                          zeroGradient;
     }
     outlet
     {

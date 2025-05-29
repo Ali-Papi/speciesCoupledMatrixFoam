@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     5.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       regIOobject;
+    location    "7/uniform";
+    object      profilingInfo;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+profilingInfo
+(
+
+    {
+        id              6;
+        parentId        5;
+        description     "Foam::Time::writeObject - outputTime";
+        calls           7;
+        totalTime       0.300766;
+        childTime       0;
+        onStack         1;
+    }
+
+    {
+        id              5;
+        parentId        1;
+        description     "Foam::Time::writeObject";
+        calls           88;
+        totalTime       0.301086;
+        childTime       0.300766;
+        onStack         1;
+    }
+
+    {
+        id              1;
+        description     "application::main";
+        calls           1;
+        totalTime       3.83409;
+        childTime       0.308287;
+        onStack         1;
+    }
+
+    {
+        id              2;
+        parentId        1;
+        description     "functionObjectList::read";
+        calls           1;
+        totalTime       8.4e-05;
+        childTime       0;
+        onStack         0;
+    }
+
+    {
+        id              3;
+        parentId        1;
+        description     "fvMatrix::solve_XH2O";
+        calls           88;
+        totalTime       0.007117;
+        childTime       0.001675;
+        onStack         0;
+    }
+
+    {
+        id              4;
+        parentId        3;
+        description     "lduMatrix::solver_XH2O";
+        calls           88;
+        totalTime       0.001675;
+        childTime       0;
+        onStack         0;
+    }
+);
+
+
+// ************************************************************************* //
