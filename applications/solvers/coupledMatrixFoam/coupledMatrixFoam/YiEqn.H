@@ -17,17 +17,16 @@
 
         if (phase.name() == "gas")
         {
-            //continue;
-            //fvScalarMatrix YCO2Eqn
-            //(
-            //    fvm::ddt(porosity * S * rho, YCO2)
-            //    + fvm::div(fvc::interpolate(rho) * alphaf * phi, YCO2)
+            fvScalarMatrix YCO2Eqn
+            (
+                porosity*fvm::ddt(S, YCO2)
+                + fvm::div(alphaf * phi, YCO2)
                 //==
                 // event source terms
                 //- sourceTerm
-            //);
-            //YCO2Eqn.solve();
-            //YH2O = 1 - YCO2;
+            );
+            YCO2Eqn.solve();
+            YH2O = 1 - YCO2;
 
         }
         else if (phase.name() == "water")

@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | foam-extend: Open Source CFD                    |
+|  \\    /   O peration     | Version:     5.0                                |
+|   \\  /    A nd           | Web:         http://www.foam-extend.org         |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       regIOobject;
+    location    "1/uniform";
+    object      profilingInfo;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+profilingInfo
+(
+
+    {
+        id              6;
+        parentId        5;
+        description     "Foam::Time::writeObject - outputTime";
+        calls           1;
+        totalTime       0.048797;
+        childTime       0;
+        onStack         1;
+    }
+
+    {
+        id              5;
+        parentId        1;
+        description     "Foam::Time::writeObject";
+        calls           26;
+        totalTime       0.049015;
+        childTime       0.048797;
+        onStack         1;
+    }
+
+    {
+        id              1;
+        description     "application::main";
+        calls           1;
+        totalTime       0.232988;
+        childTime       0.050765;
+        onStack         1;
+    }
+
+    {
+        id              2;
+        parentId        1;
+        description     "functionObjectList::read";
+        calls           1;
+        totalTime       2.1e-05;
+        childTime       0;
+        onStack         0;
+    }
+
+    {
+        id              3;
+        parentId        1;
+        description     "fvMatrix::solve_YCO2";
+        calls           26;
+        totalTime       0.001729;
+        childTime       0.000417;
+        onStack         0;
+    }
+
+    {
+        id              4;
+        parentId        3;
+        description     "lduMatrix::solver_YCO2";
+        calls           26;
+        totalTime       0.000417;
+        childTime       0;
+        onStack         0;
+    }
+);
+
+
+// ************************************************************************* //
