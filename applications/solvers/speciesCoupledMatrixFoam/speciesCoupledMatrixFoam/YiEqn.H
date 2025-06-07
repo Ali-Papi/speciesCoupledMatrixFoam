@@ -10,10 +10,6 @@
         const surfaceScalarField& alphaf = phase.alphaf();      // Alpha at face
         const volScalarField& porosity = fluid.porosity();// Porosity
          
-        // >>>>>>> I need to declare Yi first!
-        // Maybe take it as an input dictionary and declare in createFields?
-        //or maybe define it as a class inside the phaseModels (phase.Y). This might need substantial change.
-        // Below, we use the first method (take as an input).
 
         if (phase.name() == "gas")
         {
