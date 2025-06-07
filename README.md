@@ -9,24 +9,40 @@ The coupling of the new code with `coupledMatrixFoam` is as follows: initially, 
 This solver has been developed based on OpenFOAM/foam-extend ecosystem and hence has compatibility with foam-extend (OpenFOAM) version 5.0.
 
 # ⚙️ Installation Instructions
+
 Requirements
+
 foam-extend-5.0 (foam-extend installation)
+
 Python libraries:
+
 numpy
+
 pandas
+
 matplotlib
+
 Installation Steps
+
 Source the foam-extend environment:
+
 source /path/to/foam-extend-5.0/etc/bashrc
+
 Navigate to the coupledMatrixFoam directory and compile the solver:
+
 ./Allwmake -jX
+
 💡 Replace X with the number of processors to use (e.g., -j4). Leave blank to use all available processors.
 
 Executables and libraries:
+
 Dynamic libraries are installed in $FOAM_USER_LIBBIN
+
 The solver executable is installed in $FOAM_USER_APPBIN
+
 Test the solver installation by executing provided test cases in their respective directories:
 ./Allrun
+
 To clean the solver compilation and temporary files:
 ./Allwclean
 
