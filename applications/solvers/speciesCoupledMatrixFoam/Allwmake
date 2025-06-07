@@ -6,6 +6,6 @@ phaseSystems/Allwmake $targetType $*
 porousModels/Allwmake $targetType $*
 blockSystems/Allwmake $targetType $*
 
-coupledMatrixFoam/Allwmake $targetType $*
+speciesCoupledMatrixFoam/Allwmake $targetType $*
 
 #------------------------------------------------------------------------------
