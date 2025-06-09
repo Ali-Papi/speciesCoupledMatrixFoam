@@ -7,6 +7,9 @@ porousModels/Allwmake $targetType $*
 blockSystems/Allwmake $targetType $*
 
 speciesCoupledMatrixFoam/Allwmake $targetType $*
+<<<<<<< HEAD
 molarSpeciesCoupledMatrixFoam/Allwmake $targetType $*
+=======
+>>>>>>> c2af84fba1e54af87f5de87a2367671e70cce4ca
 
 #------------------------------------------------------------------------------
