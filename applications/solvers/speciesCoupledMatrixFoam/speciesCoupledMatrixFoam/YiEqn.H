@@ -3,12 +3,12 @@
     {
         phaseModel& phase = phases[phasei];
         
-        const volScalarField& S = phase.S();              // Saturation
+        //const volScalarField& S = phase.S();              // Saturation
         //const volScalarField& rho = phase.rho();          // Density
         //volScalarField rho = phase.rho();          // Density
         const surfaceScalarField& phi = phase.phi();      // Phase flux
-        const surfaceScalarField& alphaf = phase.alphaf();      // Alpha at face
-        const volScalarField& porosity = fluid.porosity();// Porosity
+        //const surfaceScalarField& alphaf = phase.alphaf();      // Alpha at face
+        //const volScalarField& porosity = fluid.porosity();// Porosity
          
         // >>>>>>> I need to declare Yi first!
         // Maybe take it as an input dictionary and declare in createFields?
@@ -19,29 +19,29 @@
         {
             fvScalarMatrix YCO2Eqn
             (
-                porosity*fvm::ddt(S, YCO2)
-                + fvm::div(alphaf * phi, YCO2)
+                fvm::ddt(YCO2)
+                + fvm::div(phi, YCO2)
                 //==
                 // event source terms
                 //- sourceTerm
             );
             YCO2Eqn.solve();
-            YH2O = 1 - YCO2;
+            YH2O = phase - YCO2;
 
         }
         else if (phase.name() == "water")
         {
             fvScalarMatrix XCO2Eqn
             (
-                porosity * fvm::ddt(S, XCO2)
-                + fvm::div(alphaf * phi, XCO2)
+                fvm::ddt(XCO2)
+                + fvm::div(phi, XCO2)
                 //==
                 // event source terms
                 //- sourceTerm
             );
             XCO2Eqn.solve();
             //XCO2 = min(max(XCO2, scalar(0)), scalar(1));
-            XH2O = 1 - XCO2;
+            XH2O = phase - XCO2;
             
             //fvScalarMatrix XH2OEqn
             //(
